@@ -5,18 +5,21 @@ services:
     init: true
     restart: unless-stopped
     volumes:
-      - ./gamefiles:/server
+      - ./server:/server
     environment:
-      - MaxServerPlayers=6
-      - Port=7777
-      - QueryPort=27015
-      - ServerPassword=password
-      - SteamServerName=Linux Server
-      - UsePerfThreads=true
-      - NoAsyncLoadingThread=true
-      - WorldSaveName=Cascade
-      - AutoUpdate=true
-#     - AdditionalArgs=-SandboxIniPath=Config/WindowsServer/Server1Sandbox.ini
+      #SKIP_UPDATE: 1
+      args: >-
+        -useperfthreads
+        -NoAsyncLoadingThread
+        -PORT=7777
+        -QUERYPORT=27015
+        -ServerPassword=password
+        -AdminPassword=password
+        -SteamServerName=Linux Server
+        -MaxServerPlayers=6
+        -WorldSaveName=Cascade
+        -SandboxIniPath=SaveGames/Server/Worlds/Cascade/SanboxSettings.ini
+        -AdminIniPath=SaveGames/Server/Admin.ini
     ports:
-      - 0.0.0.0:7777:7777/udp
-      - 0.0.0.0:27015:27015/udp
+      - 7777:7777/udp
+      - 27015:27015/udp
