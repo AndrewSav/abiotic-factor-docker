@@ -1,6 +1,23 @@
 # Abiotic Factor Linux Docker
+
 For operating a dedicated server in Docker in order to use it under Linux.
 The container uses Wine to run the server under Linux. 
+
+## Fork
+
+[![GitHub Actions](https://github.com/AndrewSav/abiotic-factor-linux-docker/actions/workflows/main.yml/badge.svg)](https://github.com/AndrewSav/abiotic-factor-linux-docker/actions)
+[![Docker Image Version (latest semver)](https://img.shields.io/docker/v/andrewsav/abiotic-factor?sort=semver)](https://hub.docker.com/r/andrewsav/abiotic-factor/tags)
+
+This is a fork of <https://github.com/Pleut/abiotic-factor-linux-docker>. Most likely you do not need it, use the original.
+Changes:
+- Gracefull termination. The server does not do save upon termination, unless manualy trigger by an admin in game, so the only difference that it terminates much faster
+- Suppressed error on start about steam folder
+- The changed docker image is at `andrewsav/abiotic-factor`
+- Renamed docker-compose.yml.example back to docker-compose.yml
+- Container name is set in docker-compose for a shorter name
+- Saved game foder in docker-compose.yml is not shared separatly since it's already shared under `./gamefiles`
+- Autoupdate in docker-compose.yml set to true by default
+
 
 ## Setup
 1. Create a new empty directory in any location with enough storage space.
